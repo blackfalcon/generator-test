@@ -15,7 +15,8 @@ class ModuleGenerator < Rails::Generators::NamedBase
 
     # Need this to happen, but if the file is already there it creates a conflict
     # Need to either bypass the overwrite or silent the conflict alert
-    #create_file "app/assets/stylesheets/_modules.sass"
+    # ------------------------------------------------------------------------
+    # create_file "app/assets/stylesheets/_modules.sass"
 
     append_to_file "app/assets/stylesheets/_modules.sass", "@import 'modules/foo/#{file_name}/#{file_name}'\n"
   end

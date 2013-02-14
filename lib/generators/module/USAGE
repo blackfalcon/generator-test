@@ -1,8 +1,16 @@
 Description:
-    Explain the generator
+    Creates named module Sass and HAML files in the appropiate directories
 
 Example:
-    rails generate module Thing
+    rails g module bar
 
     This will create:
-        what/will/it/create
+        app/views/shared/modules/foo
+        app/views/shared/modules/foo/readme.md
+        app/views/shared/modules/foo/_bar.html.haml
+        app/assets/stylesheets/modules/foo/bar
+        app/assets/stylesheets/modules/foo/bar/_extend.sass
+        app/assets/stylesheets/modules/foo/bar/_mixin.scss
+        app/assets/stylesheets/modules/foo/bar/readme.md
+        app/assets/stylesheets/modules/foo/bar/_bar.sass
+        app/assets/stylesheets/_modules.sass
