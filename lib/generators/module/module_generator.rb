@@ -5,19 +5,23 @@
 
 class ModuleGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
+  
+  argument :category
+  argument :name
+  
   def create_haml_module
-    directory "example_haml_dir", "app/views/shared/modules/foo/"
-    copy_file "module.html.haml", "app/views/shared/modules/foo/_#{file_name}.html.haml"
+    directory "example_haml_dir", "app/views/shared/modules/#{category}/"
+    copy_file "module.html.haml", "app/views/shared/modules/#{category}/_#{name}.html.haml"
   end
   def create_sass_module
-    directory "example_sass_dir", "app/assets/stylesheets/modules/foo/#{file_name}"
-    copy_file "module.sass", "app/assets/stylesheets/modules/foo/#{file_name}/_#{file_name}.sass"
+    directory "example_sass_dir", "app/assets/stylesheets/modules/#{category}/#{name}"
+    copy_file "module.sass", "app/assets/stylesheets/modules/#{category}/#{name}/_#{name}.sass"
 
     # Need this to happen, but if the file is already there it creates a conflict
     # Need to either bypass the overwrite or silent the conflict alert
     # ------------------------------------------------------------------------
     # create_file "app/assets/stylesheets/_modules.sass"
 
-    append_to_file "app/assets/stylesheets/_modules.sass", "@import 'modules/foo/#{file_name}/#{file_name}'\n"
+    append_to_file "app/assets/stylesheets/_modules.sass", "@import 'modules/#{category}/#{name}/#{name}'\n"
   end
 end
