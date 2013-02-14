@@ -11,5 +11,7 @@ class ModuleGenerator < Rails::Generators::NamedBase
   def create_sass_module
     directory "example_sass_dir", "app/assets/stylesheets/modules/foo/#{file_name}"
     copy_file "module.sass", "app/assets/stylesheets/modules/foo/#{file_name}/_#{file_name}.sass"
+    #copy_file "_modules.sass", "app/assets/stylesheets/_modules.sass"
+    append_to_file "app/assets/stylesheets/_modules.sass", "@import 'modules/foo/#{file_name}/#{file_name}'\n"
   end
 end
